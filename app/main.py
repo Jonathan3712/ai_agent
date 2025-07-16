@@ -7,8 +7,21 @@ from app.ml_model import predict_churn
 from app.sentiment import get_sentiment
 from app.openai_client import get_gpt_reply, send_message_to_user
 from app.rule_engine import evaluate_rules
+from fastapi.middleware.cors import CORSMiddleware
 
 logging.basicConfig(level=logging.INFO)
+
+app = FastAPI()
+
+# Allow React frontend origin
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # replace "*" with actual React app URL in prod
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 app = FastAPI()
 
