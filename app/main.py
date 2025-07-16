@@ -13,6 +13,11 @@ logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
+# CORS setup for React frontend
+origins = [
+    "http://localhost:3000/"  # your React dev URL
+    # "https://your-frontend-domain.com",  # your deployed frontend URL
+]
 # Allow React frontend origin
 app.add_middleware(
     CORSMiddleware,
