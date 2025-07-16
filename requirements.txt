@@ -1,8 +1,6 @@
+#fastapi uvicorn pydantic scikit-learn transformers torch openai
+python-dotenv
 fastapi
 uvicorn
-pydantic
-scikit-learn
-transformers
-torch
 openai
-python-dotenv
+textblob
