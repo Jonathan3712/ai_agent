@@ -1,22 +1,15 @@
-# from transformers import pipeline
-#
-# sentiment_pipeline = pipeline("sentiment-analysis")
-#
-# def analyze_sentiment(text: str) -> str:
-#     result = sentiment_pipeline(text)[0]
-#     label = result['label'].lower()  # e.g., POSITIVE, NEGATIVE
-#     return label
 from textblob import TextBlob
 
-def get_sentiment(text: str):
+def get_sentiment(user_message: str) -> str:
     """
-    Analyze sentiment using TextBlob.
-    Returns: 'positive', 'negative', or 'neutral'
+    Uses TextBlob to get sentiment polarity.
+    Returns: 'positive', 'neutral', or 'negative'
     """
-    polarity = TextBlob(text).sentiment.polarity
-    if polarity > 0.2:
+    blob = TextBlob(user_message)
+    polarity = blob.sentiment.polarity
+    if polarity > 0.1:
         return "positive"
-    elif polarity < -0.2:
+    elif polarity < -0.1:
         return "negative"
     else:
         return "neutral"

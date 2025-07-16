@@ -1,11 +1,18 @@
 {
   "rules": [
     {
-      "conditions": {
-        "p_churn": ">0.8",
-        "sentiment": "negative"
+      "condition": {
+        "sentiment": "negative",
+        "inactivity_greater_than": 60
       },
-      "action": "send_proactive_message"
+      "proactive_message": "Are you still there?"
+    },
+    {
+      "condition": {
+        "sentiment": "neutral",
+        "inactivity_greater_than": 120
+      },
+      "proactive_message": "Would you like some help?"
     }
   ]
 }

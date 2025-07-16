@@ -1,17 +1,21 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
-load_dotenv()
 
+load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def send_message_to_user(message: str):
-    response = client.chat.completions.create(
+def get_gpt_reply(user_message: str) -> str:
+    completion = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You are a friendly support agent."},
-            {"role": "user", "content": message}
+            {"role": "system", "content": "You are a friendly support AI."},
+            {"role": "user", "content": user_message}
         ]
     )
-    return response.choices[0].message.content
+    return completion.choices[0].message.content
+
+def send_message_to_user(message):
+    print("Simulated sending message to user:", message)
+    # Later: real send logic (websocket, email, etc.)
