@@ -1,0 +1,11 @@
+{
+  "rules": [
+    {
+      "conditions": {
+        "p_churn": ">0.8",
+        "sentiment": "negative"
+      },
+      "action": "send_proactive_message"
+    }
+  ]
+}
